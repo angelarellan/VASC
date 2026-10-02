@@ -51,7 +51,7 @@ export function Modal({ open, onClose, children, variant = "center", label, clas
         tabIndex={-1}
         className={
           isDrawer
-            ? `absolute inset-y-0 right-0 flex w-[88%] max-w-sm flex-col bg-white shadow-2xl outline-none transition-transform duration-300 ease-out ${
+            ? `absolute inset-y-0 right-0 flex w-full max-w-md flex-col overflow-hidden bg-ink text-white shadow-2xl outline-none transition-transform duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] ${
                 open ? "translate-x-0" : "translate-x-full"
               } ${className}`
             : `absolute left-1/2 top-1/2 max-h-[92vh] w-[calc(100%-2rem)] max-w-5xl -translate-x-1/2 overflow-auto rounded-3xl outline-none transition-all duration-300 ${
@@ -62,7 +62,7 @@ export function Modal({ open, onClose, children, variant = "center", label, clas
         <button
           onClick={onClose}
           className={`absolute right-4 top-4 z-10 grid size-10 place-items-center rounded-full transition ${
-            isDrawer ? "bg-ink/5 text-ink hover:bg-vasc-500 hover:text-white" : "bg-white/90 text-ink hover:bg-vasc-500 hover:text-white"
+            isDrawer ? "bg-white/10 text-white hover:bg-vasc-500" : "bg-white/90 text-ink hover:bg-vasc-500 hover:text-white"
           }`}
           aria-label="Cerrar"
         >

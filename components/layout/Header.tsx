@@ -3,12 +3,12 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
-import { Menu, ArrowRight, MapPin } from "lucide-react";
+import { Menu, ArrowRight, MapPin, Clock } from "lucide-react";
 import { nav, site, whatsappLink } from "@/lib/site";
 import { Logo } from "@/components/ui/Logo";
 import { ButtonLink } from "@/components/ui/Button";
 import { Modal } from "@/components/ui/Modal";
-import { InstagramIcon, WhatsAppIcon } from "@/components/ui/SocialIcons";
+import { FacebookIcon, InstagramIcon, WhatsAppIcon } from "@/components/ui/SocialIcons";
 
 /**
  * Header fijo. Transparente sobre el hero de la home y sólido al hacer
@@ -81,40 +81,99 @@ export function Header() {
 
       {/* Drawer mobile */}
       <Modal open={open} onClose={close} variant="right" label="Menú de navegación">
-        <div className="stripes h-2 w-full" />
-        <div className="px-6 pb-4 pt-6">
-          <Logo />
+        {/* Fondo: bastones finos + brillo rojo */}
+        <div className="stripes h-1.5 w-full shrink-0" aria-hidden="true" />
+        <div className="stripes-dark pointer-events-none absolute inset-0 top-1.5" aria-hidden="true" />
+        <div className="pointer-events-none absolute -right-24 -top-24 size-72 rounded-full bg-vasc-500/25 blur-3xl" aria-hidden="true" />
+
+        <div className="relative px-6 pb-2 pt-5">
+          <Logo tone="light" />
         </div>
-        <nav aria-label="Móvil" className="flex-1 overflow-y-auto px-3">
-          {nav.map((item, i) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              onClick={close}
-              className={`flex items-center justify-between rounded-2xl px-4 py-4 font-display text-2xl font-bold uppercase tracking-wide transition ${
-                isActive(item.href) ? "bg-vasc-50 text-vasc-600" : "text-ink hover:bg-paper"
-              }`}
-              style={{ transitionDelay: `${i * 30}ms` }}
-            >
-              {item.label}
-              <ArrowRight className="size-5 opacity-40" />
-            </Link>
-          ))}
+
+        <nav aria-label="Móvil" className="relative flex-1 overflow-y-auto px-6 pt-6">
+          <p className="mb-2 text-[0.7rem] font-bold uppercase tracking-[0.3em] text-white/60">Menú</p>
+          <ul>
+            {nav.map((item, i) => {
+              const active = isActive(item.href);
+              return (
+                <li
+                  key={item.href}
+                  className={`border-b border-white/10 transition-all duration-500 ease-out ${
+                    open ? "translate-x-0 opacity-100" : "translate-x-8 opacity-0"
+                  }`}
+                  style={{ transitionDelay: open ? `${120 + i * 50}ms` : "0ms" }}
+                >
+                  <Link
+                    href={item.href}
+                    onClick={close}
+                    aria-current={active ? "page" : undefined}
+                    className={`group flex items-center gap-4 py-4 transition-colors ${active ? "text-white" : "text-white/75 hover:text-white"}`}
+                  >
+                    <span className={`w-6 text-xs font-semibold tabular-nums ${active ? "text-vasc-400" : "text-white/60"}`}>
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className="flex-1 font-display text-[1.9rem] font-bold uppercase leading-none tracking-wide">{item.label}</span>
+                    {active ? (
+                      <span className="size-2.5 rounded-full bg-vasc-500 shadow-[0_0_12px] shadow-vasc-500" aria-hidden="true" />
+                    ) : (
+                      <ArrowRight className="size-5 -translate-x-1 opacity-0 transition group-hover:translate-x-0 group-hover:opacity-100" aria-hidden="true" />
+                    )}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
         </nav>
-        <div className="space-y-3 border-t border-ink/5 p-6">
-          <ButtonLink href="/socios#asociate" onClick={close} className="w-full" size="lg">
-            Hacete Socio
-          </ButtonLink>
-          <ButtonLink href={whatsappLink("¡Hola! Quiero hacer una consulta al club.")} external variant="whatsapp" className="w-full">
-            <WhatsAppIcon /> Escribinos
-          </ButtonLink>
-          <div className="flex items-center justify-between pt-2 text-sm text-ink/60">
-            <span className="flex items-center gap-1.5">
-              <MapPin className="size-4 text-vasc-500" /> {site.locations.sede.street}
-            </span>
-            <a href={site.social.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-vasc-500">
-              <InstagramIcon />
+
+        <div
+          className={`relative space-y-5 border-t border-white/10 bg-white/[0.03] p-6 transition-all delay-300 duration-500 ${
+            open ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
+          }`}
+        >
+          <div className="grid grid-cols-2 gap-3">
+            <Link
+              href="/socios#asociate"
+              onClick={close}
+              className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-vasc-500 text-sm font-semibold text-white shadow-lg shadow-vasc-500/30 transition hover:bg-vasc-600"
+            >
+              Hacete Socio
+            </Link>
+            <a
+              href={whatsappLink("¡Hola! Quiero hacer una consulta al club.")}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-[#15803d] text-sm font-semibold text-white shadow-lg shadow-black/20 transition hover:bg-[#166534]"
+            >
+              <WhatsAppIcon className="size-4" /> Escribinos
             </a>
+          </div>
+
+          <div className="flex items-end justify-between gap-4">
+            <div className="space-y-1.5 text-xs text-white/60">
+              <p className="flex items-center gap-1.5">
+                <MapPin className="size-3.5 text-vasc-400" /> {site.locations.sede.street}
+              </p>
+              <p className="flex items-center gap-1.5">
+                <Clock className="size-3.5 text-vasc-400" /> {site.secretariaHours[0].days}, {site.secretariaHours[0].hours}
+              </p>
+            </div>
+            <div className="flex gap-2">
+              {[
+                { href: site.social.instagram, label: "Instagram", Icon: InstagramIcon },
+                { href: site.social.facebook, label: "Facebook", Icon: FacebookIcon },
+              ].map(({ href, label, Icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="grid size-10 place-items-center rounded-full bg-white/10 transition hover:bg-vasc-500"
+                >
+                  <Icon className="size-[18px]" />
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </Modal>
