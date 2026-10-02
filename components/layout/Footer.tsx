@@ -148,13 +148,10 @@ export function Footer() {
           </address>
         </div>
 
-        <div className="flex flex-col items-center justify-between gap-4 border-t border-white/10 py-8 text-xs text-white/60 sm:flex-row">
+        <div className="border-t border-white/10 py-8 text-center text-xs text-white/60 sm:text-left">
           <p>
             © {year} {site.name}. Villa Allende, Córdoba, Argentina.
           </p>
-          <Link href="/creditos" className="hover:text-white">
-            Créditos de imágenes
-          </Link>
         </div>
       </div>
     </footer>
