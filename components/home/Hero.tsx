@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ArrowRight, ChevronDown, Phone } from "lucide-react";
+import { ArrowRight, Phone } from "lucide-react";
 import { ButtonLink } from "@/components/ui/Button";
 import { clubAge } from "@/lib/site";
 import { HeroBackground } from "./HeroBackground";
@@ -59,11 +59,6 @@ export function Hero() {
           />
         </div>
       </div>
-
-      <a href="#disciplinas" aria-label="Scroll a disciplinas" className="absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-1 text-xs font-semibold uppercase tracking-[0.3em] text-white/60 transition hover:text-white">
-        Scroll
-        <ChevronDown className="size-5 animate-bounce" />
-      </a>
     </section>
   );
 }
