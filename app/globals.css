@@ -1,26 +1,113 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ------------------------------------------------------------------
+   Identidad VASC: rojo y blanco a bastones verticales.
+   ------------------------------------------------------------------ */
+@theme {
+  --color-vasc-50: #fff1f1;
+  --color-vasc-100: #ffdfdf;
+  --color-vasc-200: #ffc5c5;
+  --color-vasc-300: #ff9b9b;
+  --color-vasc-400: #f66262;
+  --color-vasc-500: #d32f2f; /* rojo VASC — AA con texto blanco (4.98:1) */
+  --color-vasc-600: #c62828;
+  --color-vasc-700: #b71c1c;
+  --color-vasc-800: #8e1616;
+  --color-vasc-900: #5c0f0f;
+  --color-ink: #1a1a1a;
+  --color-ink-soft: #2a2a2a;
+  --color-paper: #f8f9fa;
+  --color-sepia: #3a2a26;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  /* Texto: fuente nativa del sistema (San Francisco / Segoe / Roboto), sin descarga. */
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-display: var(--font-barlow);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: none; }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
   }
 }
 
+html {
+  scroll-behavior: smooth;
+  /* Evita scroll horizontal por elementos decorativos (sin romper sticky). */
+  overflow-x: clip;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #ffffff;
+  color: var(--color-ink);
+}
+
+::selection {
+  background: var(--color-vasc-500);
+  color: #fff;
+}
+
+/* Bastones verticales del escudo, como textura decorativa. */
+.stripes {
+  background-image: repeating-linear-gradient(
+    90deg,
+    var(--color-vasc-500) 0 28px,
+    #ffffff 28px 56px
+  );
+}
+.stripes-subtle {
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgb(229 57 53 / 0.06) 0 36px,
+    transparent 36px 72px
+  );
+}
+.stripes-dark {
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgb(255 255 255 / 0.035) 0 36px,
+    transparent 36px 72px
+  );
+}
+
+/* Grano fotográfico para secciones de archivo. */
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.18;
+  mix-blend-mode: overlay;
+  background-image: url("/images/brand/grain.png");
+  background-size: 160px;
+}
+
+@media (max-width: 767px) {
+  .grain::after { display: none; }
+}
+
+/* Animación de aparición al hacer scroll (ver components/Reveal.tsx). */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .animate-marquee, .animate-float { animation: none !important; }
 }

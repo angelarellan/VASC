@@ -1,36 +1,29 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Villa Allende Sport Club — Sitio institucional
 
-## Getting Started
-
-First, run the development server:
+Next.js 16 (App Router) · React 19 · TypeScript · Tailwind CSS v4 · Lucide.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # build de producción (31 páginas estáticas)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Deploy: importar el repo en Vercel y cargar las variables de `.env.example`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Estructura
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `app/` — rutas: `/`, `/disciplinas`, `/disciplinas/[slug]`, `/el-club`, `/socios`, `/noticias`, `/noticias/[slug]`, `/contacto`, `/creditos`, `sitemap.xml`, `robots.txt`, íconos y OpenGraph.
+- `components/` — `layout/` (Header + drawer mobile, Footer con mapa, PageHeader, WhatsApp flotante), `ui/` (Button, Modal/Drawer, Logo, Reveal, SectionHeading), `disciplines/`, `news/`, `club/` (Gallery con lightbox, Timeline, StatsCounter), `membership/` (formulario → WhatsApp), `home/`.
+- `lib/` — **todo el contenido editable**: `site.ts` (contacto, redes, horarios), `disciplines.ts`, `news.ts`, `history.ts`, `membership.ts`, `credits.ts`.
+- `public/images/` — `brand/` (escudo), `historia/` (archivo restaurado), `sum/` (renders del S.U.M.), `disciplinas/` y `stock/` (fotos libres provisorias), `public/video/` (video del hero).
 
-## Learn More
+## Pendiente antes de publicar (buscar `TODO` en `lib/`)
 
-To learn more about Next.js, take a look at the following resources:
+1. Horarios y profesores de cada disciplina (`lib/disciplines.ts`, hoy "A confirmar").
+2. Horarios de Secretaría y valores de cuota (`lib/site.ts`, `lib/membership.ts`).
+3. Dominio definitivo (`NEXT_PUBLIC_SITE_URL`).
+4. Reemplazar fotos de `stock/` y `disciplinas/` por fotos propias del club; al hacerlo, quitar su entrada en `lib/credits.ts`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Agregar una noticia
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Sumar un objeto al principio del array en `lib/news.ts` y poner las imágenes en `public/images/`.
