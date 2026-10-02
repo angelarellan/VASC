@@ -55,6 +55,8 @@ export const disciplines: Discipline[] = [
     image: "/images/club/cancha-vasc.jpg",
     gallery: [
       "/images/disciplinas/basquet-plantel.jpg",
+      "/images/disciplinas/basquet-primera.jpg",
+      "/images/disciplinas/basquet-mini.jpg",
       "/images/club/cancha-vasc.jpg",
       "/images/disciplinas/basquet-escuelita.jpg",
       "/images/disciplinas/basquet-formativas.jpg",
@@ -77,20 +79,25 @@ export const disciplines: Discipline[] = [
     name: "Vóley",
     category: "equipo",
     featured: true,
-    summary: "Ramas femenina y masculina, formativas y mayores. Saque, bloqueo y mucho equipo.",
+    summary: "Mini vóley, juveniles y mayores femenino. Saque, bloqueo y mucho equipo.",
     description:
-      "El vóley crece año a año en el club. Entrenamos técnica, táctica y preparación física en un ambiente de compañerismo, con categorías para chicos, chicas y adultos que quieran sumarse a competir o simplemente a disfrutar del juego.",
-    image: "/images/stock/voley-indoor.jpg",
-    gallery: ["/images/stock/voley-indoor.jpg", "/images/stock/voley-atardecer.jpg"],
+      "El vóley crece año a año en el club. Entrenamos técnica, táctica y preparación física en un ambiente de compañerismo, con equipos juveniles y de mayores que compiten en torneos, y la nueva categoría de Mini Vóley mixto para chicos y chicas de 9 a 13 años.",
+    image: "/images/disciplinas/voley-femenino.jpg",
+    gallery: [
+      "/images/disciplinas/voley-femenino.jpg",
+      "/images/disciplinas/voley-juveniles.jpg",
+      "/images/disciplinas/voley-entrenador.jpg",
+      "/images/disciplinas/voley-mini-flyer.jpg",
+    ],
     ages: ["Infantil", "Juvenil", "Mayores"],
-    coach: TBD_COACH,
+    coach: "Prof. Miguel",
     schedule: [
-      { group: "Sub 12 / Sub 14", days: TBD, hours: TBD },
-      { group: "Sub 16 / Sub 18", days: TBD, hours: TBD },
-      { group: "Mayores", days: TBD, hours: TBD },
+      { group: "Mini Vóley mixto (9 a 13 años)", days: "Viernes", hours: "18:00 a 20:00 hs" },
+      { group: "Juveniles", days: TBD, hours: TBD },
+      { group: "Mayores femenino", days: TBD, hours: TBD },
     ],
     venue: "Sede Social",
-    highlights: ["Rama femenina y masculina", "Torneos regionales", "Vóley recreativo"],
+    highlights: ["Nuevo: Mini Vóley mixto", "Juveniles en competencia", "Mayores femenino"],
   },
   {
     slug: "futbol",
@@ -155,8 +162,8 @@ export const disciplines: Discipline[] = [
     summary: "Arte marcial olímpico: respeto, autocontrol y técnica para todas las edades.",
     description:
       "El taekwondo forma cuerpo y carácter. En nuestras clases se trabaja técnica, formas, combate y exámenes de graduación, siempre con los valores de respeto, perseverancia y autocontrol que caracterizan a este arte marcial olímpico.",
-    image: "/images/disciplinas/taekwondo.jpg",
-    gallery: ["/images/disciplinas/taekwondo.jpg", "/images/stock/artes-marciales.jpg"],
+    image: "/images/disciplinas/taekwondo-familia.jpg",
+    gallery: ["/images/disciplinas/taekwondo-familia.jpg"],
     ages: ["Infantil", "Juvenil", "Mayores"],
     coach: TBD_COACH,
     schedule: [
@@ -188,8 +195,8 @@ export const disciplines: Discipline[] = [
     summary: "Ritmos, expresión y escenario. Clases para chicas, chicos y grandes.",
     description:
       "Nuestro Estudio de Danzas es un espacio de expresión, técnica y alegría. Clases por edades con muestras de fin de año, para descubrir el movimiento y compartir el escenario con amigos.",
-    image: "/images/stock/fitness.jpg",
-    gallery: ["/images/stock/fitness.jpg"],
+    image: "/images/disciplinas/danzas-show-86.jpg",
+    gallery: ["/images/disciplinas/danzas-show-86.jpg", "/images/disciplinas/danzas-grupo.jpg"],
     ages: ["Infantil", "Juvenil", "Mayores"],
     coach: TBD_COACH,
     schedule: [

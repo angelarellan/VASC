@@ -9,7 +9,8 @@ const slides = [
   "/images/disciplinas/basquet-formativas.jpg",
   "/images/disciplinas/patin-medallas.jpg",
   "/images/disciplinas/gimnasia-ritmica-grupo.jpg",
-  "/images/disciplinas/basquet-plantel.jpg",
+  "/images/disciplinas/voley-femenino.jpg",
+  "/images/disciplinas/taekwondo-familia.jpg",
   "/images/historia/historia-equipo-futbol.jpg",
   "/images/sum/sum-render-interior.jpg",
 ];

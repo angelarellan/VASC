@@ -6,8 +6,8 @@ const tiles = [
   "/images/disciplinas/basquet-plantel.jpg",
   "/images/disciplinas/patin-medallas.jpg",
   "/images/disciplinas/tango-flyer.jpg",
-  "/images/stock/voley-indoor.jpg",
-  "/images/disciplinas/taekwondo.jpg",
+  "/images/disciplinas/voley-femenino.jpg",
+  "/images/disciplinas/danzas-show-86.jpg",
   "/images/historia/historia-socios-gala.jpg",
 ];
 

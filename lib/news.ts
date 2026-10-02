@@ -71,10 +71,23 @@ export const news: NewsItem[] = [
     excerpt: "El 24 de mayo celebramos un nuevo aniversario de la familia más grande de Villa Allende.",
     category: "Institucional",
     date: "2026-05-24",
-    cover: "/images/historia/historia-socios-gala.jpg",
+    cover: "/images/disciplinas/danzas-show-86.jpg",
+    images: ["/images/disciplinas/danzas-show-86.jpg", "/images/historia/historia-socios-gala.jpg"],
     body: [
       "El 24 de mayo de 1940 nueve vecinos soñaron un club. 86 años después, somos la familia más grande de Villa Allende.",
       "Gracias a cada socio, deportista, profe, dirigente y familia que hace posible esta historia todos los días.",
+    ],
+  },
+  {
+    slug: "nuevo-mini-voley",
+    title: "¡Nuevo! Mini Vóley en el Sport",
+    excerpt: "Categorías mixtas de 9 a 13 años. Los esperamos los viernes de 18 a 20 hs en el club.",
+    category: "Disciplinas",
+    cover: "/images/disciplinas/voley-juveniles.jpg",
+    images: ["/images/disciplinas/voley-mini-flyer.jpg", "/images/disciplinas/voley-juveniles.jpg", "/images/disciplinas/voley-femenino.jpg"],
+    body: [
+      "Sumamos una nueva disciplina al club: Mini Vóley, con categorías mixtas para chicos y chicas de 9 a 13 años.",
+      "Los esperamos los viernes de 18 a 20 hs en la sede. Consultas con el Prof. Miguel o por el WhatsApp de Secretaría.",
     ],
   },
   {
